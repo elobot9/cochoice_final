@@ -63,7 +63,7 @@ inter_response_latency: 0,
 trial_num: 0,
 
 //array containing all of the data saved over time
-data: [],
+data: {},
 
 //initializes a new trial
 startSequence: function(){
@@ -229,7 +229,7 @@ endTrial: function(){
     response_2_latency: trialSequence.response_2_latency,
     inter_response_latency: trialSequence.inter_response_latency
     }
-    this.data.push(data)
+    this.data.trial_num = data
     console.log(data)
 
   if(this.trial_num < 5){
