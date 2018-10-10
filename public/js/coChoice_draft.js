@@ -229,7 +229,7 @@ endTrial: function(){
     response_2_latency: trialSequence.response_2_latency,
     inter_response_latency: trialSequence.inter_response_latency
     }
-    this.data.trial_num = data
+    this.data[this.trial_num] = data
     console.log(data)
 
   if(this.trial_num < 5){
