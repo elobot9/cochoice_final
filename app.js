@@ -12,12 +12,12 @@ app.use(body_parser.json());
 var emptySchema = new mongoose.Schema({}, {strict: false});
 var Entry = mongoose.model('Entry', emptySchema);
 
-mongoose.connect('process.env.CONNECTION');
+mongoose.connect(process.env.CONNECTION);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function callback(){
 	console.log('database opened')
-})
+});
 
 
 // --- VIEW LOCATION, SET UP SERVING STATIC HTML
@@ -33,11 +33,11 @@ app.get('/', function(request, response){
 
 app.get('/experiment', function(request, response){
 	response.render('coChoice_draft.html')
-})
+});
 
 app.get('/debrief', function(request, response){
 	response.render('debrief.html')
-})
+});
 
 // --- SAVING DATA
 app.post('/experiment-data', function(request, response){
@@ -45,7 +45,7 @@ app.post('/experiment-data', function(request, response){
 		"data":request.body
 	});
 	response.end();
-})
+});
 // --- START THE SERVER
 var server = app.listen(process.env.PORT, function(){
 	console.log('Listening on port %d', server.address().port);
